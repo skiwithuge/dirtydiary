@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DirtyDiary</string>
+    <string name="title_hint">Add Title</string>
+    <string name="description_hint">Add Description</string>
 </resources>

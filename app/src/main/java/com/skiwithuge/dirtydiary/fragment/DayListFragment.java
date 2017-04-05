@@ -2,6 +2,8 @@ package com.skiwithuge.dirtydiary.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +16,9 @@ import com.skiwithuge.dirtydiary.model.Day;
 
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * Created by skiwithuge on 4/3/17.
  */
@@ -23,6 +28,11 @@ public class DayListFragment extends Fragment {
     private RecyclerView mDayRecyclerView;
     //private DiaryAdapter mAdapter;
     private OnDayClickListener mOnDayClickListener;
+    private OnAddDayClickListener mOnAddDayClickListener;
+
+    public interface OnAddDayClickListener{
+        void onAddDayClick();
+    }
 
     public interface OnDayClickListener {
         void onDaySelected(Day day);
@@ -38,13 +48,14 @@ public class DayListFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         mOnDayClickListener = (OnDayClickListener) context;
+        mOnAddDayClickListener = (OnAddDayClickListener) context;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_day_list, container, false);
-        ;
+        ButterKnife.bind(this, view);
 
         mDayRecyclerView = (RecyclerView) view
                 .findViewById(R.id.day_recycler_view);
@@ -78,6 +89,11 @@ public class DayListFragment extends Fragment {
 
     //TODO onOptionsItemSelected
 
+    @OnClick(R.id.fab_add)
+    public void addClick(){
+        mOnAddDayClickListener.onAddDayClick();
+    }
+
     public class DayHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
 
@@ -95,6 +111,7 @@ public class DayListFragment extends Fragment {
 
         }
 
+        //TODO CHECK
         @Override
         public void onClick(View view) {
             mOnDayClickListener.onDaySelected(mDay);
