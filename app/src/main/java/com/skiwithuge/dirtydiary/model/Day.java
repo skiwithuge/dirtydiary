@@ -10,10 +10,15 @@ import java.util.UUID;
 public class Day {
 
     public UUID mId;
-    public Date mDate;
+    public String mDate;
     public String mTitle;
     public String mContent;
 
+    public Day(String date, String title, String content){
+        mDate = date;
+        mTitle = title;
+        mContent = content;
+    }
 
     public UUID getId() {
         return mId;
@@ -23,11 +28,11 @@ public class Day {
         mId = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return mDate;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         mDate = date;
     }
 
@@ -46,4 +51,5 @@ public class Day {
     public void setContent(String content) {
         mContent = content;
     }
+
 }
