@@ -21,7 +21,7 @@ public class DiaryBaseHelper extends SQLiteOpenHelper {
                     DayTable.Cols.ID + TEXT_TYPE + " PRIMARY KEY," +
                     DayTable.Cols.DATE + TEXT_TYPE + COMMA_SEP +
                     DayTable.Cols.TITLE + TEXT_TYPE + COMMA_SEP +
-                    DayTable.Cols.CONTENT + TEXT_TYPE + COMMA_SEP +
+                    DayTable.Cols.CONTENT + TEXT_TYPE +
             " )";
 
     public DiaryBaseHelper(Context context) {

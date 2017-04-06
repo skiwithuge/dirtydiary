@@ -12,10 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.skiwithuge.dirtydiary.R;
+import com.skiwithuge.dirtydiary.interfaces.OnAddDayClickListener;
+import com.skiwithuge.dirtydiary.interfaces.OnDayClickListener;
 import com.skiwithuge.dirtydiary.model.Day;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -24,19 +27,10 @@ import butterknife.OnClick;
  */
 
 public class DayListFragment extends Fragment {
-
-    private RecyclerView mDayRecyclerView;
+    @BindView(R.id.day_recycler_view) RecyclerView mDayRecyclerView;
     //private DiaryAdapter mAdapter;
     private OnDayClickListener mOnDayClickListener;
     private OnAddDayClickListener mOnAddDayClickListener;
-
-    public interface OnAddDayClickListener{
-        void onAddDayClick();
-    }
-
-    public interface OnDayClickListener {
-        void onDaySelected(Day day);
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,8 +51,8 @@ public class DayListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_day_list, container, false);
         ButterKnife.bind(this, view);
 
-        mDayRecyclerView = (RecyclerView) view
-                .findViewById(R.id.day_recycler_view);
+        //mDayRecyclerView = (RecyclerView) view
+        //        .findViewById(R.id.day_recycler_view);
         mDayRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //TODO updateUI();

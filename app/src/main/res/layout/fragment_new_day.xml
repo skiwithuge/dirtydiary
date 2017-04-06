@@ -14,6 +14,14 @@
                   android:paddingTop="@dimen/activity_vertical_margin"
                   android:orientation="vertical">
         <EditText
+            android:id="@+id/add_task_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/date_hint"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:inputType="date"/>
+        <EditText
             android:id="@+id/add_task_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,11 +30,11 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
         <EditText
-            android:id="@+id/add_task_description"
+            android:id="@+id/add_task_content"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:gravity="top"
-            android:hint="@string/description_hint"/>
+            android:hint="@string/content_hint"/>
     </LinearLayout>
     <android.support.design.widget.FloatingActionButton
     android:id="@+id/fab_save"
