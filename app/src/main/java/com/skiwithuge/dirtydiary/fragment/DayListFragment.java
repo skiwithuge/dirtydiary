@@ -10,11 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.skiwithuge.dirtydiary.R;
 import com.skiwithuge.dirtydiary.interfaces.OnAddDayClickListener;
 import com.skiwithuge.dirtydiary.interfaces.OnDayClickListener;
 import com.skiwithuge.dirtydiary.model.Day;
+import com.skiwithuge.dirtydiary.model.DayList;
 
 import java.util.List;
 
@@ -28,7 +30,7 @@ import butterknife.OnClick;
 
 public class DayListFragment extends Fragment {
     @BindView(R.id.day_recycler_view) RecyclerView mDayRecyclerView;
-    //private DiaryAdapter mAdapter;
+    private DayAdapter mAdapter;
     private OnDayClickListener mOnDayClickListener;
     private OnAddDayClickListener mOnAddDayClickListener;
 
@@ -55,14 +57,28 @@ public class DayListFragment extends Fragment {
         //        .findViewById(R.id.day_recycler_view);
         mDayRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        //TODO updateUI();
+        updateUI();
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        //TODO updateUI();
+        updateUI();
+    }
+
+    private void updateUI() {
+        DayList dl = DayList.get(getActivity());
+        List<Day> days = dl.getDays();
+
+        if (mAdapter == null) {
+            mAdapter = new DayAdapter(getActivity(), days);
+            mDayRecyclerView.setAdapter(mAdapter);
+        } else {
+            mDayRecyclerView.setAdapter(mAdapter);
+            mAdapter.setDays(days);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -90,18 +106,24 @@ public class DayListFragment extends Fragment {
 
     public class DayHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
+        @BindView(R.id.card_date) TextView mDate;
+        @BindView(R.id.card_title) TextView mTitle;
 
         private Day mDay;
 
         public DayHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            //TODO Complete
+            ButterKnife.bind(this, itemView);
+
+
         }
 
         public void bindDay(Day day) {
             mDay = day;
-            //TODO Complete
+
+            mDate.setText(mDay.getDate());
+            mTitle.setText(mDay.getTitle());
 
         }
 
