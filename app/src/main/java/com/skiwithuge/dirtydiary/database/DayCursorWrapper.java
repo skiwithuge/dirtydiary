@@ -3,7 +3,6 @@ package com.skiwithuge.dirtydiary.database;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import com.skiwithuge.dirtydiary.database.DiaryDbSchema.DayTable;
 import com.skiwithuge.dirtydiary.model.Day;
 
 /**
@@ -17,9 +16,9 @@ public class DayCursorWrapper extends CursorWrapper {
     }
 
     public Day getDay() {
-        String date = getString(getColumnIndex(DayTable.Cols.DATE));
-        String title = getString(getColumnIndex(DayTable.Cols.TITLE));
-        String content = getString(getColumnIndex(DayTable.Cols.CONTENT));
+        String date = getString(getColumnIndex(DayTable.COL_DATE));
+        String title = getString(getColumnIndex(DayTable.COL_TITLE));
+        String content = getString(getColumnIndex(DayTable.COL_CONTENT));
 
         return new Day(date, title, content);
     }
