@@ -6,25 +6,31 @@ package com.skiwithuge.dirtydiary.model;
 
 public class Day {
 
-    private String mDate;
-    private String mTitle;
-    private String mContent;
+    private long id;
+    private long date;
+    private String title;
+    private String content;
 
-    public Day(String date, String title, String content) {
-        mDate = date;
-        mTitle = title;
-        mContent = content;
+    public Day(long id, long date, String title, String content) {
+        this.id = id;
+        this.date = date;
+        this.title = title;
+        this.content = content;
     }
 
-    public String getDate() {
-        return mDate;
+    public long getId() {
+        return id;
+    }
+
+    public long getDate() {
+        return date;
     }
 
     public String getTitle() {
-        return mTitle;
+        return title;
     }
 
     public String getContent() {
-        return mContent;
+        return content;
     }
 }

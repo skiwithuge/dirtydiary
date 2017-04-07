@@ -65,7 +65,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayHolder> {
                 }
             });
 
-            mDate.setText(day.getDate());
+            mDate.setText(Long.toString(day.getDate()));
             mTitle.setText(day.getTitle());
         }
     }

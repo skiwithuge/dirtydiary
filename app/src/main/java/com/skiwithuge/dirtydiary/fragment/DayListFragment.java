@@ -16,7 +16,7 @@ import com.skiwithuge.dirtydiary.interfaces.OnAddDayClickListener;
 import com.skiwithuge.dirtydiary.interfaces.OnDayClickListener;
 import com.skiwithuge.dirtydiary.interfaces.OnItemClickListener;
 import com.skiwithuge.dirtydiary.model.Day;
-import com.skiwithuge.dirtydiary.model.DayList;
+import com.skiwithuge.dirtydiary.model.QueryManager;
 
 import java.util.List;
 
@@ -74,7 +74,7 @@ public class DayListFragment extends Fragment implements OnItemClickListener<Day
     }
 
     private void updateUI() {
-        DayList dl = DayList.get(getActivity());
+        QueryManager dl = QueryManager.get(getActivity());
         List<Day> days = dl.getDays();
 
         if (mAdapter == null) {
