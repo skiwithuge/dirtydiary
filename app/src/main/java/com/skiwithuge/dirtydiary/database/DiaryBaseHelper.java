@@ -16,8 +16,8 @@ public class DiaryBaseHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + DayTable.TABLENAME + " (" +
-                    DayTable.ID + " TEXT PRIMARY KEY, " +
-                    DayTable.COL_DATE + " TEXT, " +
+                    DayTable.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    DayTable.COL_DATE + " LONG NOT NULL, " +
                     DayTable.COL_TITLE + " TEXT, " +
                     DayTable.COL_CONTENT + " TEXT " +
                     ")";
@@ -32,6 +32,6 @@ public class DiaryBaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
     }
 }

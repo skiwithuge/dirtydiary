@@ -23,7 +23,7 @@ public class DiaryListActivity extends SingleFragmentActivity implements OnDayCl
 
     @Override
     public void onDaySelected(Day day) {
-        Fragment dayFragment = new DayFragment(day);
+        Fragment dayFragment = DayFragment.newInstance(day.getId());
         replaceFragment(dayFragment);
     }
 
