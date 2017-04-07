@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.skiwithuge.dirtydiary.database.DiaryDbSchema.DayTable;
 
 /**
  * Created by skiwithuge on 4/6/17.
@@ -17,10 +16,10 @@ public class DiaryBaseHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + DayTable.TABLENAME + " (" +
-                    DayTable.Cols.ID + " TEXT PRIMARY KEY, " +
-                    DayTable.Cols.DATE + " TEXT, " +
-                    DayTable.Cols.TITLE + " TEXT, " +
-                    DayTable.Cols.CONTENT + " TEXT " +
+                    DayTable.ID + " TEXT PRIMARY KEY, " +
+                    DayTable.COL_DATE + " TEXT, " +
+                    DayTable.COL_TITLE + " TEXT, " +
+                    DayTable.COL_CONTENT + " TEXT " +
                     ")";
 
     public DiaryBaseHelper(Context context) {
