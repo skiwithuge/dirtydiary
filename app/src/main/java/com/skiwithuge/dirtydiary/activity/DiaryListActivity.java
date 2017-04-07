@@ -2,7 +2,6 @@ package com.skiwithuge.dirtydiary.activity;
 
 import android.support.v4.app.Fragment;
 
-import com.skiwithuge.dirtydiary.R;
 import com.skiwithuge.dirtydiary.fragment.DayFragment;
 import com.skiwithuge.dirtydiary.fragment.DayListFragment;
 import com.skiwithuge.dirtydiary.fragment.NewDayFragment;
@@ -16,7 +15,7 @@ import com.skiwithuge.dirtydiary.model.Day;
  */
 
 public class DiaryListActivity extends SingleFragmentActivity implements OnDayClickListener,
-        OnAddDayClickListener, OnSaveDayClickListener{
+        OnAddDayClickListener, OnSaveDayClickListener {
     @Override
     protected Fragment createFragment() {
         return new DayListFragment();
@@ -25,30 +24,18 @@ public class DiaryListActivity extends SingleFragmentActivity implements OnDayCl
     @Override
     public void onDaySelected(Day day) {
         Fragment dayFragment = new DayFragment(day);
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, dayFragment)
-                .addToBackStack(null)
-                .commit();
+        replaceFragment(dayFragment);
     }
 
     @Override
     public void onAddDayClick() {
         Fragment newDayFragment = NewDayFragment.newInstance();
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, newDayFragment)
-                .addToBackStack(null)
-                .commit();
+        replaceFragment(newDayFragment);
     }
 
     @Override
     public void onSaveDayClick() {
-        Fragment DayListFragment = new DayListFragment();
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, DayListFragment)
-                .addToBackStack(null)
-                .commit();
+        Fragment dayListFragment = new DayListFragment();
+        replaceFragment(dayListFragment);
     }
 }

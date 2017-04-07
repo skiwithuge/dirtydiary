@@ -27,16 +27,10 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
         }
     }
 
-/*    @Override
-    public void onBackPressed(){
-        android.app.FragmentManager fm = getFragmentManager();
-        if (fm.getBackStackEntryCount() > 0) {
-            Log.i("MainActivity", "popping backstack");
-            fm.popBackStack();
-        } else {
-            Log.i("MainActivity", "nothing on backstack, calling super");
-            super.onBackPressed();
-        }
+    protected void replaceFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit();
     }
-*/
 }
