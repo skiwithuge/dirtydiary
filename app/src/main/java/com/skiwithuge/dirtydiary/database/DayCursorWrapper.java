@@ -16,13 +16,11 @@ public class DayCursorWrapper extends CursorWrapper {
         super(cursor);
     }
 
-    public Day getDay(){
+    public Day getDay() {
         String date = getString(getColumnIndex(DayTable.Cols.DATE));
         String title = getString(getColumnIndex(DayTable.Cols.TITLE));
         String content = getString(getColumnIndex(DayTable.Cols.CONTENT));
 
-        Day day = new Day(date,title,content);
-
-        return day;
+        return new Day(date, title, content);
     }
 }
